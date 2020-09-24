@@ -69,7 +69,7 @@ class PEND_SINGLE_Class:
     self.update()
     self.draw()
 
-  def start_sim(self):
+  def wait_for_pressing_enter(self):
     while tsys.get_key() != "enter":
       pass
 
@@ -85,20 +85,19 @@ class PEND_SINGLE_Class:
       if key == "enter":
         break
 
+  def start_sim(self):
+    self.draw()
+    self.wait_for_pressing_enter()
+    while True:
+      self.update_and_draw()
+      key = tsys.get_key()
+      if key == "enter":
+        self.pause_or_resume()
+      if key == "esc":
+        self.reset()
+      #time.sleep_ms(20)
+      
 def main():
   # 引数は(半径, 初期角度, 初期角速度, ステップ, 1ステップの内部分割数)
   pend_single = PEND_SINGLE_Class(1, PI * 0.999 , 0, 1/2**4, 8)
-  pend_single.draw()
   pend_single.start_sim()
-
-  while True:
-    pend_single.update_and_draw()
-    
-    key = tsys.get_key()
-    if key == "enter":
-      pend_single.pause_or_resume()
-    if key == "esc":
-      pend_single.reset()
-
-    #time.sleep_ms(20)
-
