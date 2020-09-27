@@ -1,16 +1,18 @@
 # Python による常微分方程式の数値解法_改良版 / 古典的 Runge-Kutta 法
 class RK4_Class:
   def __init__(self, funcs, inits, h, numOfDiv=1):
+    _num_of_funcs = len(funcs)
+
     self.funcs = funcs
     self.t0 = 0
     self.inits = inits
-    self.h = h / numOfDiv
+    self.h = h / num_of_div
     self.half_h = self.h / 2
     self.sixth_h = self.h / 6
-    self.range_dim = range(len(funcs))
-    self.range_div = range(numOfDiv)
-    self.f = [[0 for i in self.range_dim] for i in range(4)]
-    self.temp = [[0 for i in self.range_dim] for i in range(3)]
+    self.range_dim = range(_num_of_funcs)
+    self.range_div = range(num_of_div)
+    self.f = [[0] * _num_of_funcs] * 4
+    self.temp = [[0] * _num_of_funcs] * 3
 
   def update(self):
     for i in self.range_div:
