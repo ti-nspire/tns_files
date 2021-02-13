@@ -1,6 +1,6 @@
 # Python による常微分方程式の数値解法_改良版 / 古典的 Runge-Kutta 法
 class RK4_Class:
-  def __init__(self, funcs, inits, h, numOfDiv=1):
+  def __init__(self, funcs, inits, h, num_of_div=1):
     _num_of_funcs = len(funcs)
 
     self.funcs = funcs
