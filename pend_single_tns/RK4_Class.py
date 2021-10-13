@@ -7,12 +7,12 @@ class RK4_Class:
     self.t0 = 0
     self.inits = inits
     self.h = h / num_of_div
-    self.half_h = self.h / 2
-    self.sixth_h = self.h / 6
+    self.half_h = self.h / 2.0
+    self.sixth_h = self.h / 6.0
     self.range_dim = range(_num_of_funcs)
     self.range_div = range(num_of_div)
-    self.f = [[0] * _num_of_funcs] * 4
-    self.temp = [[0] * _num_of_funcs] * 3
+    self.f = [[0.0] * _num_of_funcs] * 4
+    self.temp = [[0.0] * _num_of_funcs] * 3
 
   def update(self):
     for i in self.range_div:
@@ -23,7 +23,7 @@ class RK4_Class:
       self.f[2] = [self.funcs[j](self.t0 + self.half_h, *self.temp[1]) for j in self.range_dim]
       self.temp[2] = [self.inits[j] + self.h * self.f[2][j] for j in self.range_dim]
       self.f[3] = [self.funcs[j](self.t0 + self.h , *self.temp[2]) for j in self.range_dim]
-      self.inits = [self.inits[j] + self.sixth_h * (self.f[0][j] + 2 * (self.f[1][j] + self.f[2][j]) + self.f[3][j]) for j in self.range_dim]
+      self.inits = [self.inits[j] + self.sixth_h * (self.f[0][j] + 2.0 * (self.f[1][j] + self.f[2][j]) + self.f[3][j]) for j in self.range_dim]
       self.t0 += self.h
     return self
 
