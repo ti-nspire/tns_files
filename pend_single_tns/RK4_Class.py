@@ -4,7 +4,7 @@ class RK4_Class:
     _num_of_funcs = len(funcs)
 
     self.funcs     = funcs
-    self.t0        = 0
+    self.t0        = 0.0
     self.inits     = inits
     self.h         = h / num_of_div
     self.half_h    = self.h / 2.0
