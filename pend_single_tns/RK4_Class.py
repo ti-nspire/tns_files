@@ -12,7 +12,6 @@ class RK4_Class:
     self.range_dim = range(_num_of_funcs)
     self.range_div = range(num_of_div)
     self.f         = [[0.0] * _num_of_funcs] * 4
-    self.temp      = [[0.0] * _num_of_funcs] * 3
 
   def update(self):
     for i in self.range_div:
