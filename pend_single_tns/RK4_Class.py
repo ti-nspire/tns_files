@@ -16,12 +16,13 @@ class RK4_Class:
 
   def update(self):
     for i in self.range_div:
-      self.f[0]  = [self.funcs[j](self.t0, *self.inits) for j in self.range_dim]
+      self.f[0]  = [self.funcs[j](self.t0              , *self.inits                                                            ) for j in self.range_dim]
       self.f[1]  = [self.funcs[j](self.t0 + self.half_h, *([self.inits[j] + self.half_h * self.f[0][j] for j in self.range_dim])) for j in self.range_dim]
       self.f[2]  = [self.funcs[j](self.t0 + self.half_h, *([self.inits[j] + self.half_h * self.f[1][j] for j in self.range_dim])) for j in self.range_dim]
-      self.f[3]  = [self.funcs[j](self.t0 + self.h , *([self.inits[j] + self.h * self.f[2][j] for j in self.range_dim])) for j in self.range_dim]
+      self.f[3]  = [self.funcs[j](self.t0 + self.h     , *([self.inits[j] + self.h      * self.f[2][j] for j in self.range_dim])) for j in self.range_dim]
+
       self.inits = [self.inits[j] + self.sixth_h * (self.f[0][j] + 2.0 * (self.f[1][j] + self.f[2][j]) + self.f[3][j]) for j in self.range_dim]
-      self.t0   += self.h
+      self.t0 += self.h
     return self
 
   def print(self):
