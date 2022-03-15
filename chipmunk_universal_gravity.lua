@@ -1,3 +1,9 @@
+-----------------------------------------------------
+-- To start or pause the sim, press the Enter key. --
+-- To reset the sim, press the Esc key.            --
+-----------------------------------------------------
+
+
 -- n 体に拡張する。前回の表を pSpace のメソッド（★★ の部分）として実装した。
 
 require "physics"; require "color"
